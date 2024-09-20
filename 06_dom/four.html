@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code | DOM</title>
+</head>
+
+<body style="background-color: #212121;
+color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+
+</body>
+
+<script>
+
+    // Add Elements
+
+    function addLanguage(langName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+
+        document.querySelector(".language").appendChild(li);
+    }
+
+    addLanguage("python")
+    addLanguage("ts")
+
+    // This is better approach as far as performance is considered
+    function addOptiLanguage(langName) {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(`${langName}`));
+
+        document.querySelector(".language").appendChild(li);
+
+
+    }
+    addOptiLanguage("Go-Lang")
+    addOptiLanguage("Ruby")
+
+    // Edit Elements
+    const secondLang = document.querySelector("li:nth-child(2)")
+
+    // 1st approach:
+    // secondLang.innerHTML = "Mojo"
+
+    // 2nd approach:
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli)
+
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = "<li>TypeScript</li>";
+
+    // Remove / Delete Elements:
+    const langLang = document.querySelector("li:last-child")
+    langLang.remove()
+
+</script>
+
+</html>

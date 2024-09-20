@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <button id="stop">Stop</button>
+</body>
+
+<script>
+    const sayHello = function () {
+        console.log("Hello");
+    }
+    
+    const changeMe = setTimeout(function () {
+        console.log("Hello");
+        document.querySelector("h1").innerHTML = "Welcome to JS mastery class"
+
+    }, 2000)
+
+    document.querySelector("#stop").addEventListener("click", () => {
+        clearTimeout(changeMe);
+        console.log("Stopped")
+    })
+
+</script>
+
+</html>

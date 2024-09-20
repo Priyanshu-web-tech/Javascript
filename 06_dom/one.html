@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+        .bg-black {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+    <div>
+        <h1 id="title" class="heading">Dom Learning on chai aur code <span style="display: none;">test text</span></h1>
+        <h2>lorem</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+
+        <input type="password" name="" id="">
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+
+        </ul>
+    </div>
+
+    <script defer>
+        // document.getElementById('title').setAttribute("class","text") //This will always over write all previous classes
+
+        const title = document.getElementById('title');
+
+        console.log(title)
+
+        title.style.backgroundColor = "red"
+
+        title.style.padding = "2rem"
+        title.style.borderRadius = "15px"
+
+        console.log(title.innerText) //=>This will just give outer most text that is visible,and text inside any inner tag like span will not appear
+        console.log(title.textContent)//=>Complete text of all tags will appear 
+        console.log(title.innerHTML)//as it is html will come whther it is text or any tag/div
+
+        console.log(document.querySelector('h2')
+        )
+
+        console.log(document.querySelector('#title')
+        )
+
+        console.log(document.querySelector('input[type="password"]')
+        )
+
+        const myul = document.querySelector('ul');
+
+        myul.querySelector('li').style.backgroundColor = "green";
+
+        myul.querySelector('li').innerText = "five";
+
+        const tempLiList = document.querySelectorAll('li') //=>This will give a NodeList
+
+        console.log(tempLiList);
+
+        // tempLiList[0].style.backgroundColor = "yellow";
+
+        tempLiList.forEach((li) => {
+            li.style.backgroundColor = "yellow"
+
+            li.style.color = "#212121"
+        })
+
+        const tempClassList = document.getElementsByClassName('list-item'); //=>This wil give HTML Collection,which does not have any useful functions,Thus we need to convert it into Array as: 
+
+        const myArr = Array.from(tempClassList)
+
+        myArr.forEach((li) => {
+            li.style.backgroundColor = "blue"
+
+            li.style.color = "#212121"
+        })
+
+    </script>
+</body>
+
+</html>

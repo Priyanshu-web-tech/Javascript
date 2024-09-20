@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const url = "https://api.github.com/users/Priyanshu-web-tech"
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        // 0 means request is not initialized
+        // 1 means server connection is established
+        // 2 means request is received
+        // 3 means request is in process
+        // 4 means request is completed
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+
+            console.log("Followers", data.followers);
+        }
+    }
+    xhr.send()
+
+</script>
+
+</html>

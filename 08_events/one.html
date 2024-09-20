@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+
+    <div>
+        <ul id="images">
+
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+
+
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+
+
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+
+
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+
+
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+
+
+        </ul>
+    </div>
+</body>
+
+<script>
+
+    // Directly adding event on any item is not feasiable
+
+    // document.getElementById('owl').onclick = function () {
+    //     alert("Owl clicked")
+    // } => NOT RECOMMENDED
+
+    // Recommended Method:
+
+    // document.getElementById('images').addEventListener('click', (e) => {
+    //     console.log(`Clicked inside the ul`)
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', (e) => {
+    //     console.log(`Owl Clicked`)
+
+    //     e.stopPropagation()
+    // }, false)
+
+    /* Here false is by default,even if we do not give it,it will work fine
+
+    false->Means Event will be handled through bubbling i.e. innermost element will be propagated first and then so on
+
+    true->opposite of false,handled through event capturing
+
+    To prevent this beheviour stopPropagation() in used
+    */
+
+
+    // What we should take care about events/study->
+
+    // type,timestamp,defaultPrevented,
+
+    // target,toElement , srcElement,currentTarget,
+
+    //clientX,clientY,screenY,
+
+    //altKey,ctrlKey,shiftKey,keyCode
+
+    // document.getElementById('google').addEventListener('click', (e) => {
+    //     e.preventDefault()
+
+    // })
+
+    document.querySelector('#images').addEventListener('click', (e) => {
+
+        console.log(e.target.tagName);
+
+        if (e.target.tagName === 'IMG') {
+            // e.target.parentNode.style.display="none";
+
+            // OR
+            e.target.parentNode.remove()
+
+        }
+
+
+    })
+
+
+</script>
+
+</html>
